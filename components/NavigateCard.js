@@ -32,7 +32,7 @@ const NavigateCard = () => {
 						returnKeyType={'search'}
 						onPress={(data, details = null) => {
 							console.log(details.geometry.location);
-							console.log(data.description);
+							console.log('-----', data.description);
 							dispatch(
 								setDestination({
 									location: details.geometry.location,
