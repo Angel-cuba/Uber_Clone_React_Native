@@ -2,6 +2,7 @@
 // import 'intl';
 import { Platform } from 'react-native';
 // import 'intl/locale-data/jsonp/en';
+import { IntlProvider, createIntl, createIntlCache, useIntl } from 'react-intl';
 
 import React, { useState } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
@@ -44,14 +45,30 @@ const RideOptionsCard = () => {
 
 	const navigation = useNavigation();
 
+	const InKm = parseInt(travelTimeInformations?.distance?.text.slice(0, -3), 10);
+	const def = Math.round(InKm * 1.60934);
+
 	//Intl issue
-	if (Platform.OS === 'android') {
-		// See https://github.com/expo/expo/issues/6536 for this issue.
-		if (typeof Intl.__disableRegExpRestore === 'function') {
-			Intl.__disableRegExpRestore();
-		}
-	}
+	// if (Platform.OS === 'android') {
+	// 	// See https://github.com/expo/expo/issues/6536 for this issue.
+	// 	if (typeof Intl.__disableRegExpRestore === 'function') {
+	// 		Intl.__disableRegExpRestore();
+	// 	}
+	//}
+	// This is optional but highly recommended
+	// since it prevents memory leak
+	// const cache = createIntlCache();
+
+	// const Intl = useIntl();
+	// const Intl = createIntl(
+	// 	{
+	// 		locale: 'en-gb',
+	// 		messages: {},
+	// 	},
+	// 	cache
+	// );
 	return (
+		// <IntlProvider>
 		<SafeAreaView style={tw`flex-grow`}>
 			<View>
 				<TouchableOpacity
@@ -65,7 +82,7 @@ const RideOptionsCard = () => {
 					{!travelTimeInformations?.distance?.text
 						? 'Something went wrong, please try again later 😪'
 						: 'Distance'}{' '}
-					{travelTimeInformations?.distance?.text}
+					{def} km
 				</Text>
 			</View>
 			<FlatList
@@ -127,6 +144,7 @@ const RideOptionsCard = () => {
 				</TouchableOpacity>
 			</View>
 		</SafeAreaView>
+		// </IntlProvider>
 	);
 };
 
