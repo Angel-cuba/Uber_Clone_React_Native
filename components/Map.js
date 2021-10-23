@@ -12,7 +12,7 @@ const Map = () => {
 	const origin = useSelector(selectOrigin);
 	const destination = useSelector(selectDestination);
 	const mapRef = useRef(null);
-
+	console.log(destination);
 	const dispatch = useDispatch();
 
 	// console.log('Origen----', origin.description);
