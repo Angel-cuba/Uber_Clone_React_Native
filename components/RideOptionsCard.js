@@ -120,9 +120,9 @@ const RideOptionsCard = () => {
 						</View>
 						<Text style={tw`text-xl`}>
 							{travelTimeInformations?.status !== 'ZERO_RESULTS' ? (
-								new Intl.NumberFormat('en-gb', {
+								new Intl.NumberFormat('eu', {
 									style: 'currency',
-									currency: 'GBP',
+									currency: 'EUR',
 								}).format(
 									(travelTimeInformations?.duration?.value * SURGE_PRICE * multiplier) / 100
 								)

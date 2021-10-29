@@ -9,6 +9,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MapScreens from './screens/MapScreens';
 
+if (Platform.OS === 'android') {
+	require('intl');
+	require('intl/locale-data/jsonp/fr-BE');
+	require('intl/locale-data/jsonp/nl-BE');
+	require('intl/locale-data/jsonp/it-IT');
+}
+
 //Set up Redux
 
 export default function App() {
